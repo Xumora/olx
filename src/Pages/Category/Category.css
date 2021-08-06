@@ -1,0 +1,13 @@
+.category{
+    background-color: #F2F4F5;
+}
+.product{
+    border-radius: 10px;
+}
+.productImg img{
+    height: 170px;
+    object-fit: cover;
+}
+.info{
+    height: 170px;
+}
