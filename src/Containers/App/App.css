@@ -1,7 +1,0 @@
-.btn:focus{box-shadow: none !important;}
-body{color: #002F34;}
-.c-link:hover p{
-    color: white !important;
-    background-color: #002F34;
-    transition: .3s;
-}

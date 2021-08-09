@@ -13,18 +13,18 @@ import barter from "./barter"
 
 
 const data = {
-    childrenWorld: childrenWorld,
-    estate: estate,
-    transport: transport,
-    job: job,
-    animals: animals,
-    garden: garden,
-    electronics: electronics,
-    services: services,
-    style: style,
-    hobby: hobby,
-    free: free,
-    barter: barter
+    childrenWorld,
+    estate,
+    transport,
+    job,
+    animals,
+    garden,
+    electronics,
+    services,
+    style,
+    hobby,
+    free,
+    barter
 }
 
 // const data2 = [

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import './Footer.css'
+import styled from "styled-components";
+import ThemeContext from '../../ThemeContext';
 
 const data = [
     {
@@ -27,17 +28,37 @@ const data = [
 ]
 
 const Footer = () => {
+    const { colors } = useContext(ThemeContext);
+
+    const FooterWrapper = styled.footer`
+        background-color: ${props => props.colors.fbgColor};
+        
+        & ul{
+            list-style: none;
+
+            & .btn{
+                color: ${props => props.colors.fcolor} 
+            } 
+        }
+
+        & p{
+            color: ${props => props.colors.fcolor} 
+        } 
+    `;
+
+    console.log(colors);
+
     return (
-        <footer>
+        <FooterWrapper colors={colors}>
             <div className="container py-5">
                 <div className="row">
                     {
                         data.map((value, index) => {
-                            return <div className="col-12 col-md-3">
+                            return <div className="col-12 col-md-3" key={index}>
                                 <ul>
                                     {
                                         value.links.map((v, i) => {
-                                            return <li>
+                                            return <li key={i}>
                                                 <Link to={v.to} className="btn p-0 fw-bold mt-3">
                                                     {v.name}
                                                 </Link>
@@ -59,7 +80,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </footer>
+        </FooterWrapper>
     )
 }
 

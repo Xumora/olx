@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import ThemeContext from '../../ThemeContext';
 
 const data = [
     { name: "Bolalar dunyosi", to: "/childrenWorld", bgColor: "#ffce32", img: "https://categories.olxcdn.com/assets/categories/olxuz/detskiy-mir-36-2x.png" },
@@ -17,14 +19,35 @@ const data = [
 ]
 
 const Home = () => {
+    const { colors } = useContext(ThemeContext);
+
+    const HomeWrapper = styled.section`
+        background-color: ${props => props.colors.homebgColor};
+
+        & h1{
+            color: ${props => props.colors.fcolor}
+        }
+        
+        & .c-link p{
+            color: ${props => props.colors.fcolor};
+            transition: .3s;
+        }
+
+        & .c-link:hover p{
+            color: ${props => props.colors.fbgColor};
+            background-color: ${props => props.colors.hoverColor};
+            transition: .3s;
+        }
+  `;
+
     return (
-        <section>
+        <HomeWrapper colors={colors}>
             <div className="container py-5">
                 <h1 className="text-center">Bosh toifalar</h1>
                 <div className="row py-5">
                     {
                         data.map((v, i) => {
-                            return <div className="col-4 col-md-2 mt-4">
+                            return <div className="col-4 col-md-2 mt-4" key={i}>
                                 <Link to={v.to} className="d-block w-50 mx-auto c-link" style={{ textDecoration: "none" }}>
                                     <div style={{ width: "80px", height: "80px", borderRadius: "50%", backgroundColor: v.bgColor, margin: "0 auto" }}>
                                         <img src={v.img} alt="?" className="w-100" />
@@ -36,7 +59,7 @@ const Home = () => {
                     }
                 </div>
             </div>
-        </section>
+        </HomeWrapper>
     )
 }
 
